@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Sign up form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .form-container{
+            max-width: 400px;
+            margin: auto;
+            padding: 20px ;
+            background-color: azure;
+            border: 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <div class="toggle-btns text-center">
+            <button id="login" class="btn btn-primary">Login</button>
+            <button id="sign" class="btn btn-secondary">Sign Up</button>
+        </div>
+        <form id="lg" style="display: none;">
+            <div id="a3" class="alert alert-success" style="display: none;">
+                <strong>Login Successfully !</strong>
+            </div>
+            <div id="error" class="alert alert-danger" style="display: none;">
+                <strong>Please Enter your email and password !</strong>
+            </div>
+            <div id="error1" class="alert alert-danger" style="display: none;">
+                <strong>Please Enter your email !</strong>
+            </div>
+            <div id="error2" class="alert alert-danger" style="display: none;">
+                <strong>Please Enter your password !</strong>
+            </div>
+            <h3 class="text-center">Login</h3>
+            <div class="mb-4">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" class="form-control" required>
+
+            </div>
+            <div class="mb-4">
+                <label for="psd" class="form-label">password</label>
+                <input type="password" id="psd" class="form-control" required>
+            </div>
+            <div>
+                <button id="a1" type="submit" class="btn btn-primary">Login</button>
+            </div>
+        </form>
+        <form id="sg" style="display: none;">
+            <div id="a4" class="alert alert-success" style="display: none;">
+                <strong>Sign up Successfully !</strong>
+            </div>
+            <div id="err" class="alert alert-danger" style="display: none;">
+                <strong>Please Enter username , email and password !</strong>
+            </div>
+            <div id="err1" class="alert alert-danger" style="display: none;">
+                <strong>Please Enter your email !</strong>
+            </div>
+            <div id="err2" class="alert alert-danger" style="display: none;">
+                <strong>Please Enter your password !</strong>
+            </div>
+            <div id="err3" class="alert alert-danger" style="display: none;">
+                <strong>Please Enter your username !</strong>
+            </div>
+            <h3 class="text-center">Sign up</h3>
+            <div class="mb-4">
+                <label for="user" class="form-label">Uesrname </label>
+                <input type="text" id="user" class="form-control" required>
+            </div>
+            <div class="mb-4">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email1" class="form-control" required>
+
+            </div>
+            <div class="mb-4">
+                <label for="psd1" class="form-label">password</label>
+                <input type="password" id="psd1" class="form-control" required>
+            </div>
+            <div>
+                <button id="a2" type="submit" class="btn btn-primary">Sign up</button>
+            </div>
+
+
+        </form>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#login').click(function () {
+                $('#lg').show();
+                $('#sg').hide();
+            });
+
+            $('#sign').click(function () {
+                $('#lg').hide();
+                $('#sg').show();
+            })
+
+            $('#a1').click(function (e) {
+                e.preventDefault();
+                let em = $("#email").val()
+                let pass = $("#psd").val()
+
+                if (em === '' && pass === '') {
+                    $("#error").show();
+                    $("#a3").hide()
+                }
+                else if (em === '') {
+                    $("#error1").show()
+                    $("#error").hide()
+                    $("#a3").hide()
+                    $("#error2").hide()
+                }
+                else if (pass === '') {
+                    $("#error2").show()
+                    $("#error1").hide()
+                    $("#error").hide()
+                    $("#a3").hide()
+                }
+                else {
+                    $("#a3").show();
+                    $("error").hide();
+                    $("#error1").hide()
+                    $("#error2").hide()
+                }
+            });
+
+            $("#a2").click(function (event) {
+                event.preventDefault();
+                let us = $("#user").val();
+                let email = $("#email1").val();
+                let password = $("#psd1").val()
+
+                if (us === '' && email === '' && password === '') {
+                    $("#err").show()
+                    $("#a4").hide()
+                    $("#err1").hide()
+                    $("#err2").hide()
+                    $("#err3").hide()
+
+                }
+                else if (us === '') {
+                    $("#err3").show()
+                    $("#err2").hide()
+                    $("#err1").hide()
+                    $("#a4").hide()
+                    $("#err").hide()
+
+                }
+                else if (email === '') {
+                    $("#err3").hide()
+                    $("#err2").hide()
+                    $("#err1").show()
+                    $("#a4").hide()
+                    $("#err").hide()
+
+                }
+                else if (password === '') {
+                    $("#err3").hide()
+                    $("#err2").show()
+                    $("#err1").show()
+                    $("#a4").hide()
+                    $("#err").hide()
+
+                }
+                else {
+                    $("#err3").hide()
+                    $("#err2").hide()
+                    $("#err1").hide()
+                    $("#a4").show()
+                    $("#err").hide()
+
+                }
+            });
+
+
+        });
+
+    </script>
+</body>
+
+</html>
