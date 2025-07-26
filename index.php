@@ -6,7 +6,7 @@ if(isSet($_POST['submit'])){
         echo "Login successfully.";
     }
     else{
-       echo "Fail to login.";
+       echo "Fail to login please check.";
     }
 }
 else{
