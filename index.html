@@ -25,7 +25,7 @@
             <button id="sign" class="btn btn-secondary">Sign Up</button>
         </div>
         <br>
-        <form id="lg" style="display: none;">
+        <form action="index.php" method="post" id="lg" style="display: none;">
             <div id="a3" class="alert alert-success" style="display: none;">
                 <strong>Login Successfully !</strong>
             </div>
@@ -41,15 +41,15 @@
             <h3 class="text-center">Login</h3>
             <div class="mb-4">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" id="email" class="form-control" required>
+                <input type="email" id="email" name="email" class="form-control" required>
 
             </div>
             <div class="mb-4">
                 <label for="psd" class="form-label">password</label>
-                <input type="password" id="psd" class="form-control" required>
+                <input type="password" id="psd" name="password" class="form-control" required>
             </div>
             <div>
-                <button id="a1" type="submit" class="btn btn-primary">Login</button>
+                <button id="a1" type="submit" name="submit" class="btn btn-primary">Login</button>
             </div>
         </form>
         <form id="sg" style="display: none;">
@@ -103,21 +103,26 @@
             })
 
             $('#a1').click(function (e) {
-                e.preventDefault();
+               
                 let em = $("#email").val()
                 let pass = $("#psd").val()
 
                 if (em === '' && pass === '') {
+                    e.preventDefault();
                     $("#error").show();
                     $("#a3").hide()
+                     $("#error1").hide()
+                    $("#error2").hide()
                 }
                 else if (em === '') {
+                    e.preventDefault();
                     $("#error1").show()
                     $("#error").hide()
                     $("#a3").hide()
                     $("#error2").hide()
                 }
                 else if (pass === '') {
+                    e.preventDefault();
                     $("#error2").show()
                     $("#error1").hide()
                     $("#error").hide()
@@ -125,7 +130,7 @@
                 }
                 else {
                     $("#a3").show();
-                    $("error").hide();
+                    $("#error").hide();
                     $("#error1").hide()
                     $("#error2").hide()
                 }
